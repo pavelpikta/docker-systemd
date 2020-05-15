@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - master
+  release:
+    types:
+      - published
+      - created
+      - edited
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - centos7
+          - ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1.1.0
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: pavelpikta/docker-systemd/${{ matrix.os }}
+        dockerfile: ${{ matrix.os }}.dockerfile
+        tag_with_ref: true
