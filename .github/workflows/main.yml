@@ -6,9 +6,9 @@ on:
       - master
   release:
     types:
-      - published
       - created
-      - edited
+  schedule:
+    - cron: '0 0 * * 1'
 
 jobs:
   build:
