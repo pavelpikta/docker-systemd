@@ -17,7 +17,7 @@ RUN yum -y update; yum clean all; \
     rm -f /lib/systemd/system/basic.target.wants/*;\
     rm -f /lib/systemd/system/anaconda.target.wants/*;
 
-RUN yum makecache fast && yum -y update \
+RUN yum makecache fast && yum -y update && \
     INSTALL_PKGS="initscripts systemd-sysv redhat-lsb-core sudo bash iproute yum-plugin-ovl" && \
     yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
     sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && \
