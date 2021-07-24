@@ -12,6 +12,7 @@ Intended for use testing Ansible roles with Molecule
 
 ubuntu:
 * `ubuntu-18.04:latest`
+* `ubuntu-20.04:latest`
 
 centos:
 * `centos7:latest`
