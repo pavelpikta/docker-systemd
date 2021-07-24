@@ -1,6 +1,6 @@
 # Docker systemd images
 
-![Docker Images CI](https://github.com/pavelpikta/docker-systemd/workflows/Docker%20Image%20CI/badge.svg?branch=main)
+[![Docker Images CI](https://github.com/pavelpikta/docker-systemd/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/pavelpikta/docker-systemd/actions/workflows/main.yml)
 
 Docker images that runs `systemd` with a minimal set of services.
 
