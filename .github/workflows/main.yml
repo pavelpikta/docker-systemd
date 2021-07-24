@@ -3,6 +3,9 @@ name: Docker Images CI
 
 on:
   push:
+    paths-ignore:
+      - ".github/**"
+      - README.md
   pull_request:
   schedule:
     - cron: "0 0 * * 1"
