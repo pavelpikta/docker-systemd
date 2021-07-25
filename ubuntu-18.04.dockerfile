@@ -14,7 +14,7 @@ RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
 RUN apt-get update && \
   apt-get install -y sudo bash apt-utils locales iproute2 \
-  ca-certificates dbus dbus-user-session gnupg systemd libsystemd-dev rsyslog systemd-cron&& \
+  ca-certificates dbus dbus-user-session gnupg systemd libsystemd-dev rsyslog systemd-cron && \
   rm -rf /var/lib/apt/lists/* && \
   locale-gen en_US.UTF-8
 

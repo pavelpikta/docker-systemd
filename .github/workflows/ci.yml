@@ -13,6 +13,7 @@ env:
 
 jobs:
   test:
+    name: Test - ${{ matrix.os }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -34,8 +35,10 @@ jobs:
       - name: Verify the built image
         run: docker exec --tty test-container env TERM=xterm systemctl --version
 
-  build-and-push-image:
+  build:
+    if: github.ref == 'refs/heads/main'
     needs: test
+    name: Build - ${{ matrix.os }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -47,7 +50,6 @@ jobs:
           - centos7
           - ubuntu-18.04
           - ubuntu-20.04
-    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout repository
