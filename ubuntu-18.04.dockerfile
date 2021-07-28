@@ -9,14 +9,33 @@ ENV container=docker \
   TERM=xterm \
   DEBIAN_FRONTEND="noninteractive"
 
+ARG PKGS_LIST="apt-utils \
+  bash \
+  ca-certificates \
+  dbus \
+  dbus-user-session \
+  gnupg \
+  iproute2 \
+  libsystemd-dev \
+  locales \
+  python3 \
+  python3-pip \
+  python3-setuptools \
+  rsyslog \
+  sudo \
+  systemd \
+  systemd-cron"
+
 # Enable all repositories
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
 RUN apt-get update && \
-  apt-get install -y sudo bash apt-utils locales iproute2 \
-  ca-certificates dbus dbus-user-session gnupg systemd libsystemd-dev rsyslog systemd-cron && \
+  apt-get install -y ${PKGS_LIST} && \
+  apt-get autoremove && \
+  apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
-  locale-gen en_US.UTF-8
+  locale-gen en_US.UTF-8 && \
+  pip3 install --upgrade --no-cache-dir pip
 
 RUN rm -Rf /var/lib/apt/lists/* \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
@@ -32,16 +51,6 @@ RUN rm -Rf /var/lib/apt/lists/* \
   && rm -f /lib/systemd/system/systemd*udev* \
   && rm -f /lib/systemd/system/getty.target \
   && rm -Rf /usr/share/doc && rm -Rf /usr/share/man
-
-RUN apt-get update && \
-  apt-get install -y \
-  python3 \
-  python3-pip \
-  python3-setuptools && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
-
-RUN pip3 install --upgrade pip
 
 RUN cp /bin/true /sbin/agetty
 
