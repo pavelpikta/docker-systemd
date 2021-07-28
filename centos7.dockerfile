@@ -24,9 +24,8 @@ RUN yum makecache fast && \
   sed -i 's/plugins=0/plugins=1/g' /etc/yum.conf && \
   yum clean all && rm -rf /var/cache/yum && \
   touch /etc/sysconfig/network && \
-  localedef -f UTF-8 -i en_US en_US.UTF-8
-
-RUN python -m pip install --upgrade pip==20.3.4
+  localedef -f UTF-8 -i en_US en_US.UTF-8 && \
+  python -m pip install --upgrade --no-cache-dir pip==20.3.4
 
 RUN cp /bin/true /sbin/agetty
 
