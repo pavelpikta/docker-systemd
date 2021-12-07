@@ -1,4 +1,4 @@
-# Docker systemd images
+# Docker systemd images #
 
 [![Docker Images CI](https://github.com/pavelpikta/docker-systemd/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/pavelpikta/docker-systemd/actions/workflows/ci.yml)
 
@@ -8,16 +8,18 @@ Intended for use testing Ansible roles with Molecule
 
 **Development use only. Do not use in production!**
 
-## Supported tags
+## Supported tags ##
 
 ubuntu:
+
 * `ubuntu-18.04:latest`
 * `ubuntu-20.04:latest`
 
 centos:
+
 * `centos7:latest`
 
-## Running
+## Running ##
 
 These images were created for using with molecule tool when do testing with docker driver.
 
@@ -52,12 +54,33 @@ platforms:
       - debian_family
 ```
 
-## License
+## License ##
 
-Apache [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/pavelpikta/docker-systemd/main/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Author Information
+See [LICENSE](LICENSE) for full details.
+
+```text
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+```
+
+## Author Information ##
 
 Authors:
 
-- [Pavel Pikta](https://github.com/pavelpikta) <pavel_pitka@outlook.com>
+* [Pavel Pikta](https://github.com/pavelpikta) <pavel_pitka@outlook.com>
