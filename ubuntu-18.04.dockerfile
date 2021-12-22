@@ -30,7 +30,7 @@ ARG PKGS_LIST="apt-utils \
 RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
 RUN apt-get update && \
-  apt-get install -y ${PKGS_LIST} && \
+  apt-get install -y --no-install-recommends ${PKGS_LIST} && \
   apt-get autoremove && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
