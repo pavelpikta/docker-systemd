@@ -1,6 +1,6 @@
 FROM centos:7
 
-LABEL "maintainer"="Pavel Pikta <pikta.pavel@gmail.com>"
+LABEL "maintainer"="Pavel Pikta <pavel_pikta@outlook.com>"
 
 ENV container=docker \
   LANG=en_US.UTF-8 \

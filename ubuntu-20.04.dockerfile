@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-LABEL "maintainer"="Pavel Pikta <pikta.pavel@gmail.com>"
+LABEL "maintainer"="Pavel Pikta <pavel_pikta@outlook.com>"
 
 ENV container=docker \
   LANGUAGE=en_US.UTF-8 \
