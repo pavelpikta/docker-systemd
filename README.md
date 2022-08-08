@@ -10,14 +10,9 @@ Intended for use testing Ansible roles with Molecule
 
 ## Supported tags ##
 
-ubuntu:
-
-* `ubuntu-18.04:latest`
-* `ubuntu-20.04:latest`
-
-centos:
-
-* `centos7:latest`
+* `docker-systemd:centos7`
+* `docker-systemd:ubuntu-18.04`
+* `docker-systemd:ubuntu-20.04`
 
 ## Running ##
 
@@ -28,7 +23,7 @@ To start a service which requires systemd, configure molecule.yml with a systemd
 ```yaml
 platforms:
   - name: test-docker-centos7
-    image: ghcr.io/pavelpikta/docker-systemd/centos7:latest
+    image: ghcr.io/pavelpikta/docker-systemd:centos7
     privileged: true
     pre_build_image: true
     command: /sbin/init
@@ -40,8 +35,8 @@ platforms:
     groups:
       - rhel_family
 
-  - name: test-docker-ubuntu1804
-    image: ghcr.io/pavelpikta/docker-systemd/ubuntu-18.04:latest
+  - name: test-docker-ubuntu2004
+    image: ghcr.io/pavelpikta/docker-systemd:ubuntu-20.04
     command: /sbin/init
     privileged: true
     pre_build_image: true
