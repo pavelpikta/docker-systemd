@@ -58,7 +58,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,enable=true,value=${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.os }}:latest
+            type=raw,enable=true,value=${{ matrix.os }}
           labels: |
             org.opencontainers.image.version=${{ matrix.os }}
 
