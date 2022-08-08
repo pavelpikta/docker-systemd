@@ -58,7 +58,9 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,enable=true,value=${{ matrix.os }}:latest
+            type=raw,enable=true,value=${{ env.REGISTRY }}/${{ github.repository }}/${{ matrix.os }}:latest
+          labels: |
+            org.opencontainers.image.version=${{ matrix.os }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3.1.1
