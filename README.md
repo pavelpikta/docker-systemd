@@ -8,7 +8,9 @@ Docker images that runs `systemd` with a minimal set of services.
 
 ## Supported tags ##
 
+* `docker-systemd:ubuntu-20.04`
 * `docker-systemd:ubuntu-22.04`
+* `docker-systemd:ubuntu-24.04`
 
 ## Usage ##
 
