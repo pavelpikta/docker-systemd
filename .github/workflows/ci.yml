@@ -6,6 +6,7 @@ on:
   pull_request:
   schedule:
     - cron: "0 0 * * 1"
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -82,6 +83,7 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
 
       - name: Run Snyk to check Docker image for vulnerabilities
         continue-on-error: true
