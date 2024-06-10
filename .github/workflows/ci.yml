@@ -110,10 +110,11 @@ jobs:
   delete-package-versions:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    needs: ["build"]
     steps:
       - uses: actions/delete-package-versions@v5.0.0
         with:
           package-name: 'docker-systemd'
           package-type: 'container'
-          min-versions-to-keep: 3
+          min-versions-to-keep: 9
           delete-only-untagged-versions: 'true'
