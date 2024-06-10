@@ -81,8 +81,12 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: ${{ steps.meta.outputs.tags }}
-          args: --file=${{ matrix.os }}.Dockerfile
+          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.os }}
+          args: --file=${{ matrix.os }}.Dockerfile --severity-threshold=high --sarif-file-output=snyk.sarif
+          sarif: true
+
+      - name: Replace security-severity undefined for license-related findings
+        run: "sed -i 's/"security-severity": "undefined"/"security-severity": "0"/g' snyk.sarif"
 
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
