@@ -72,6 +72,8 @@ jobs:
             type=raw,enable=true,value=${{ matrix.os }}
           labels: |
             org.opencontainers.image.version=${{ matrix.os }}
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5.4.0
@@ -79,6 +81,7 @@ jobs:
           context: ./
           file: ${{ matrix.os }}.Dockerfile
           platforms: linux/amd64,linux/arm64
+          provenance: false
           pull: true
           push: ${{ github.ref == 'refs/heads/main' }}
           tags: ${{ steps.meta.outputs.tags }}
