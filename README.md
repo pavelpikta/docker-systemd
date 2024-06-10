@@ -4,50 +4,13 @@
 
 Docker images that runs `systemd` with a minimal set of services.
 
-Intended for use testing Ansible roles with Molecule
-
 **Development use only. Do not use in production!**
 
 ## Supported tags ##
 
-* `docker-systemd:centos7`
-* `docker-systemd:ubuntu-18.04`
-* `docker-systemd:ubuntu-20.04`
+* `docker-systemd:ubuntu-22.04`
 
-## Running ##
-
-These images were created for using with molecule tool when do testing with docker driver.
-
-To start a service which requires systemd, configure molecule.yml with a systemd compliant image, capabilities, volumes, and command as follows.
-
-```yaml
-platforms:
-  - name: test-docker-centos7
-    image: ghcr.io/pavelpikta/docker-systemd:centos7
-    privileged: true
-    pre_build_image: true
-    command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    groups:
-      - rhel_family
-
-  - name: test-docker-ubuntu2004
-    image: ghcr.io/pavelpikta/docker-systemd:ubuntu-20.04
-    command: /sbin/init
-    privileged: true
-    pre_build_image: true
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    groups:
-      - debian_family
-```
+## Usage ##
 
 ## License ##
 
@@ -78,4 +41,4 @@ under the License.
 
 Authors:
 
-* [Pavel Pikta](https://github.com/pavelpikta) <pavel_pitka@outlook.com>
+* [Pavel Pikta](https://github.com/pavelpikta) <devops@pavelpikta.com>
