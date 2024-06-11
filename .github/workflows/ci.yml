@@ -76,6 +76,7 @@ jobs:
           DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
 
       - name: Build and push Docker image
+        id: push
         uses: docker/build-push-action@v5.4.0
         with:
           context: ./
@@ -106,6 +107,15 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
+
+      - name: Attest
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: actions/attest-build-provenance@v1.2.0
+        id: attest
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
 
   delete-package-versions:
     if: ${{ github.ref == 'refs/heads/main' }}
