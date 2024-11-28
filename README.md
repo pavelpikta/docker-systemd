@@ -14,6 +14,45 @@ Docker images that runs `systemd` with a minimal set of services.
 
 ## Usage ##
 
+### Running Docker images with systemd ###
+
+To run the Docker images with `systemd`, use the following command:
+
+```sh
+docker run --privileged --volume /sys/fs/cgroup:/sys/fs/cgroup:ro -d <image_name>
+```
+
+Replace `<image_name>` with the appropriate image tag (e.g., `docker-systemd:ubuntu-20.04`).
+
+### Examples ###
+
+#### Running Ubuntu 20.04 Docker image with systemd ####
+
+```sh
+docker run --privileged --volume /sys/fs/cgroup:/sys/fs/cgroup:ro -d docker-systemd:ubuntu-20.04
+```
+
+#### Running Ubuntu 22.04 Docker image with systemd ####
+
+```sh
+docker run --privileged --volume /sys/fs/cgroup:/sys/fs/cgroup:ro -d docker-systemd:ubuntu-22.04
+```
+
+#### Running Ubuntu 24.04 Docker image with systemd ####
+
+```sh
+docker run --privileged --volume /sys/fs/cgroup:/sys/fs/cgroup:ro -d docker-systemd:ubuntu-24.04
+```
+
+## Contributing ##
+
+We welcome contributions to this repository. Please follow the guidelines below:
+
+1. Read and follow the [Contributor Covenant Code of Conduct](.github/CODE_OF_CONDUCT.md).
+2. Review the [CODEOWNERS](.github/CODEOWNERS) file to understand the code ownership and review process.
+3. Fork the repository and create a new branch for your feature or bugfix.
+4. Submit a pull request with a clear description of your changes.
+
 ## License ##
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
