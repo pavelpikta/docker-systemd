@@ -75,9 +75,8 @@ jobs:
             type=raw,enable=true,value=${{ matrix.os }}
           labels: |
             org.opencontainers.image.version=${{ matrix.os }}
-            org.opencontainers.image.description="Docker image with systemd support"
         env:
-          DOCKER_METADATA_ANNOTATIONS_LEVELS: index
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
 
       - name: Build and push Docker image
         id: push
@@ -92,6 +91,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          outputs: type=image,name=target,annotation-index.org.opencontainers.image.description=Docker image with systemd support
 
       - name: Run Snyk to check Docker image for vulnerabilities
         continue-on-error: true
