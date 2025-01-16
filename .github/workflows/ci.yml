@@ -76,6 +76,8 @@ jobs:
           labels: |
             org.opencontainers.image.version=${{ matrix.os }}
             org.opencontainers.image.description="Docker image with systemd support"
+        env:
+          DOCKER_METADATA_ANNOTATIONS_LEVELS: index
 
       - name: Build and push Docker image
         id: push
