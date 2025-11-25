@@ -115,6 +115,7 @@ jobs:
           sarif_file: snyk.sarif
 
       - name: Attest
+        if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/attest-build-provenance@v3
         id: attest
         with:
